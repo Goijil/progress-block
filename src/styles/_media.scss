@@ -1,0 +1,14 @@
+$tablet: 334px;
+$laptop: 1024px;
+
+@mixin tablet {
+  @media ((width >= $tablet) and (width <= $laptop)) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (width > $laptop) {
+    @content;
+  }
+}
