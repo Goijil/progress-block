@@ -5,16 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="dist/styles/main.css" />
     <title>Progress Block</title>
+    <script src="src/scripts/main.js" type="module" defer></script>
   </head>
   <body>
-    <main class="container">
-      <h1 class="title_block">Progress</h1>
-      <div class="progress_bar">o</div>
-      <div class="control_panel">
-        <div><input type="text" name="" id="" /> <span>Volue</span></div>
-        <div><button></button><span>Animate</span></div>
-        <div><button></button><span>Hide</span></div>
+    <div class="progress">
+      <h1 class="progress__title">Progress</h1>
+      <div class="progress__bar">
+        <div class="progress__bar--fill"></div>
       </div>
-    </main>
+      <div class="progress__panel mobile">
+        <div class="progress__panel--item">
+          <input
+            class="progress__panel--input"
+            type="number"
+            placeholder="0-100"
+            name=""
+            id=""
+          />
+          <span class="progress__panel--text">Value</span>
+        </div>
+        <div class="progress__panel--item">
+          <div class="progress__panel--button" data-active="false">
+            <div class="progress__panel--button--indicator"></div>
+          </div>
+          <span class="progress__panel--text">Animate</span>
+        </div>
+        <div class="progress__panel--item">
+          <div class="progress__panel--button" data-active="false">
+            <div class="progress__panel--button--indicator"></div>
+          </div>
+          <span class="progress__panel--text">Hide</span>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

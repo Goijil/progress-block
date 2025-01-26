@@ -1,32 +1,299 @@
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
+@charset "UTF-8";
+:root {
+  --color-background: #1a1a1a;
+  --color-panel-bg: #212121;
+  --color-text: #e4f4f4;
+  --color-accent: #c6ff00;
+  --color-border: #e4f4f4;
+  --font-family-base: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html {
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
-html,
+/**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
 body,
-div,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-ul,
-li {
+:where(blockquote, figure):where([class]) {
   margin: 0;
+}
+
+/**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
   padding: 0;
-  border: 0;
-  font-size: 100%;
-  vertical-align: baseline;
+  border: none;
+}
+
+/**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+   Упрощаем работу с изображениями и видео
+  */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+   Наследуем свойства шрифт для полей ввода
+  */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  height: 100%;
+  /**
+     Убираем скачок интерфейса по горизонтали
+     при появлении / исчезновении скроллбара
+    */
+  scrollbar-gutter: stable;
+}
+
+/**
+   Плавный скролл
+  */
+html,
+:has(:target) {
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  min-height: 100%;
+  /**
+     Унифицированный интерлиньяж
+    */
+  line-height: 1.5;
+}
+
+/**
+   Нормализация высоты элемента ссылки при его инспектировании в DevTools
+  */
+a:where([class]) {
+  display: inline-flex;
+}
+
+/**
+   Курсор-рука при наведении на элемент
+  */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+   (за исключением тех, у которых уже указан
+   атрибут fill со значением 'none' или начинается с 'url')
+  */
+:where([fill]:not([fill=none], [fill^=url])) {
+  fill: currentColor;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+   (за исключением тех, у которых уже указан
+   атрибут stroke со значением 'none')
+  */
+:where([stroke]:not([stroke=none], [stroke^=url])) {
+  stroke: currentColor;
+}
+
+/**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+   Приведение рамок таблиц в классический 'collapse' вид
+  */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+}
+
+@media ((width >= 334px) and (width <= 1024px)) {
+  .progress {
+    display: grid;
+    grid-template-rows: 0.35fr 1fr 1fr 0.35fr;
+    width: 320px;
+    height: 568px;
+    padding: 15px;
+    background-color: var(--color-panel-bg);
+    border-radius: 10px;
+  }
+  .progress .mobile {
+    justify-self: center;
+  }
+}
+@media (width > 1024px) {
+  .progress {
+    display: grid;
+    grid-template-columns: 0.25fr 1fr 1fr 0.25fr;
+    height: 320px;
+    width: 568px;
+    padding: 20px;
+    background-color: var(--color-panel-bg);
+    border-radius: 10px;
+  }
+}
+.progress__title {
+  font-size: 16px;
+}
+.progress__bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progress__bar--fill {
+  border: 10px solid var(--color-accent);
+  border-radius: 50%;
+  width: 125px;
+  height: 125px;
+}
+.progress__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.progress__panel--item {
+  display: flex;
+  gap: 20px;
+}
+.progress__panel--input {
+  width: 40px;
+  height: 26px;
+  border: 1.5px solid var(--color-text);
+  border-radius: 25px;
+  text-align: center;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: 12px;
+}
+.progress__panel--input:hover {
+  border: 1.5px solid var(--color-text);
+  background-color: var(--color-background);
+}
+.progress__panel--input:focus {
+  outline: none;
+  border: 1.5px solid var(--color-text);
+}
+.progress__panel--input::-webkit-inner-spin-button, .progress__panel--input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.progress__panel--input {
+  -moz-appearance: textfield;
+}
+.progress__panel--button {
+  width: 40px;
+  height: 26px;
+  border: 1.5px solid var(--color-text);
+  border-radius: 25px;
+  position: relative;
+  background-color: var(--color-background);
+}
+.progress__panel--button--indicator {
+  width: 22px;
+  height: 22px;
+  margin: 1px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
 }
 
 /*# sourceMappingURL=main.css.map */
