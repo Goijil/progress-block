@@ -11,11 +11,24 @@
     <div class="progress" data-js-progress>
       <h1 class="progress__title">Progress</h1>
       <div class="progress__bar" data-visibility="true">
-        <div class="progress__bar--fill" data-js-progress-bar></div>
+        <div class="progress__bar--layout" data-js-progress-bar>
+          <div class="progress__bar--inner"></div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            version="1.1"
+            class="progress__bar--filler"
+          >
+            <circle
+              class="progress__bar--filler--circle"
+              data-js-progress-circle
+            />
+          </svg>
+        </div>
       </div>
       <div class="progress__panel mobile">
         <div class="progress__panel--item">
           <input
+            aria-label="Введите значение прогресса"
             class="progress__panel--input"
             placeholder="0-100"
             name="progress"
@@ -25,22 +38,23 @@
         </div>
         <div class="progress__panel--item">
           <div class="progress__panel--button" data-js-progress-button>
-            <div
+            <button
               class="progress__panel--button--indicator"
               data-active="false"
               data-js-progress-indicator
-            ></div>
+              data-js-progress-bar-animation-toggle
+            ></button>
           </div>
           <span class="progress__panel--text">Animate</span>
         </div>
         <div class="progress__panel--item">
           <div class="progress__panel--button" data-js-progress-button>
-            <div
+            <button
               class="progress__panel--button--indicator"
               data-active="false"
               data-js-progress-indicator
-              data-js-progress-bar-switch
-            ></div>
+              data-js-progress-bar-visibility-toggle
+            ></button>
           </div>
           <span class="progress__panel--text">Hide</span>
         </div>

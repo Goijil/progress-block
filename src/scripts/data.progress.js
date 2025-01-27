@@ -3,5 +3,8 @@ export const DProgress = {
   button: "[data-js-progress-button]",
   indicator: "[data-js-progress-indicator]",
   bar: "[data-js-progress-bar]",
-  switch: "[data-js-progress-bar-switch]",
+  buttonVisibilityToggle: "[data-js-progress-bar-visibility-toggle]",
+  circle: "[data-js-progress-circle]",
+  input: "[data-js-progress-input]",
+  buttonAnimationToggle: "[ data-js-progress-bar-animation-toggle]",
 };

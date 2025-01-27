@@ -39,13 +39,19 @@
     justify-content: center;
     align-items: center;
 
-    &--fill {
-      display: block;
+    &--layout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      border: 10px solid var(--color-accent);
+      width: 120px;
+      height: 120px;
+
       border-radius: 50%;
-      width: 125px;
-      height: 125px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4),
+        0 -2px 4px rgba(255, 255, 255, 0.068),
+        inset 0 1px 3px rgba(255, 255, 255, 0.137),
+        inset -2px -2px 6px rgba(0, 0, 0, 0.6);
 
       &.is-shown {
         transition: all 1s ease 0s;
@@ -57,6 +63,39 @@
         transition: all 1s ease 0s;
         opacity: 0;
         transform: translate(0, 50%);
+      }
+    }
+
+    &--inner {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: var(--color-panel-bg);
+      border-radius: 50%;
+
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+        0 -2px 6px rgba(255, 255, 255, 0.2),
+        inset 2px 2px 4px rgba(0, 0, 0, 0.5),
+        inset -2px -2px 6px rgba(255, 255, 255, 0.096);
+    }
+
+    &--filler {
+      width: 120px;
+      height: 120px;
+
+      transform: rotate(-90deg);
+      transform-origin: center;
+
+      &--circle {
+        fill: none;
+        stroke: var(--color-accent);
+        stroke-width: 10px;
+        cx: 50%;
+        cy: 50%;
+        stroke-linecap: round;
+        r: calc(50% - 5px);
+        stroke-dasharray: 346;
+        stroke-dashoffset: 346;
       }
     }
   }
@@ -84,16 +123,6 @@
       color: var(--color-text);
 
       font-size: 12px;
-
-      &:hover {
-        border: 1.5px solid var(--color-text);
-        background-color: var(--color-background);
-      }
-
-      &:focus {
-        outline: none;
-        border: 1.5px solid var(--color-text);
-      }
     }
 
     &--button {
@@ -104,6 +133,7 @@
       background-color: var(--color-background);
 
       &--indicator {
+        position: absolute;
         width: 22px;
         height: 22px;
         margin: 1px;

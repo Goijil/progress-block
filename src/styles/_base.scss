@@ -141,6 +141,10 @@ label {
   cursor: pointer;
 }
 
+button {
+  margin: 0;
+  border: 0;
+}
 /** 
    Эти псевдоэлементы используются для стилизации внутренних 
    и внешних кнопок увеличения и уменьшения значения в 
@@ -156,6 +160,16 @@ input {
   & {
     appearance: textfield;
     -moz-appearance: textfield;
+  }
+
+  &:hover {
+    border: 1.5px solid var(--color-text);
+    background-color: var(--color-background);
+  }
+
+  &:focus {
+    outline: none;
+    border: 1.5px solid var(--color-text);
   }
 }
 

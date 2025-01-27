@@ -150,6 +150,11 @@ label {
   cursor: pointer;
 }
 
+button {
+  margin: 0;
+  border: 0;
+}
+
 /** 
    Эти псевдоэлементы используются для стилизации внутренних 
    и внешних кнопок увеличения и уменьшения значения в 
@@ -162,6 +167,14 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 input {
   appearance: textfield;
   -moz-appearance: textfield;
+}
+input:hover {
+  border: 1.5px solid var(--color-text);
+  background-color: var(--color-background);
+}
+input:focus {
+  outline: none;
+  border: 1.5px solid var(--color-text);
 }
 
 /**
@@ -253,22 +266,49 @@ body {
   justify-content: center;
   align-items: center;
 }
-.progress__bar--fill {
-  display: block;
-  border: 10px solid var(--color-accent);
+.progress__bar--layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  width: 125px;
-  height: 125px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 -2px 4px rgba(255, 255, 255, 0.068), inset 0 1px 3px rgba(255, 255, 255, 0.137), inset -2px -2px 6px rgba(0, 0, 0, 0.6);
 }
-.progress__bar--fill.is-shown {
+.progress__bar--layout.is-shown {
   transition: all 1s ease 0s;
   opacity: 1;
   transform: translate(0, 0);
 }
-.progress__bar--fill.is-hidden {
+.progress__bar--layout.is-hidden {
   transition: all 1s ease 0s;
   opacity: 0;
   transform: translate(0, 50%);
+}
+.progress__bar--inner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: var(--color-panel-bg);
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 -2px 6px rgba(255, 255, 255, 0.2), inset 2px 2px 4px rgba(0, 0, 0, 0.5), inset -2px -2px 6px rgba(255, 255, 255, 0.096);
+}
+.progress__bar--filler {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+.progress__bar--filler--circle {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 10px;
+  cx: 50%;
+  cy: 50%;
+  stroke-linecap: round;
+  r: calc(50% - 5px);
+  stroke-dasharray: 346;
+  stroke-dashoffset: 346;
 }
 .progress__panel {
   display: flex;
@@ -290,14 +330,6 @@ body {
   color: var(--color-text);
   font-size: 12px;
 }
-.progress__panel--input:hover {
-  border: 1.5px solid var(--color-text);
-  background-color: var(--color-background);
-}
-.progress__panel--input:focus {
-  outline: none;
-  border: 1.5px solid var(--color-text);
-}
 .progress__panel--button {
   width: 40px;
   height: 26px;
@@ -306,6 +338,7 @@ body {
   background-color: var(--color-background);
 }
 .progress__panel--button--indicator {
+  position: absolute;
   width: 22px;
   height: 22px;
   margin: 1px;

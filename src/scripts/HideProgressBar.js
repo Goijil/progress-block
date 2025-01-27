@@ -1,14 +1,14 @@
 export class HideProgressBar {
-  constructor(rootSelector, barSelector, switchSelector) {
+  constructor(rootSelector, barSelector, buttonSelector) {
     this.selectors = {
       root: rootSelector,
       bar: barSelector,
-      switch: switchSelector,
+      button: buttonSelector,
     };
 
     this.rootElement = document.querySelector(this.selectors.root);
     this.barElement = this.rootElement.querySelector(this.selectors.bar);
-    this.switchElement = this.rootElement.querySelector(this.selectors.switch);
+    this.buttonElement = this.rootElement.querySelector(this.selectors.button);
 
     this.onVisibilityChange();
   }
@@ -22,7 +22,7 @@ export class HideProgressBar {
   };
 
   onButtonClick = (bar) => {
-    if (!this.getStateDataActive(this.switchElement)) {
+    if (!this.getStateDataActive(this.buttonElement)) {
       bar.setAttribute("data-visibility", "false");
       bar.classList.remove("is-shown");
       bar.classList.add("is-hidden");
@@ -34,7 +34,7 @@ export class HideProgressBar {
   };
 
   onVisibilityChange = () => {
-    this.switchElement.addEventListener("click", () =>
+    this.buttonElement.addEventListener("click", () =>
       this.onButtonClick(this.barElement)
     );
   };
