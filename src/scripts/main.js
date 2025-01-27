@@ -1,9 +1,7 @@
+import { DProgress } from "./data.progress.js";
 import { MoveBtnIndicator } from "./MoveBtnIndicator.js";
+import { HideProgressBar } from "./HideProgressBar.js";
 
-const Progress = {
-  root: "[data-js-progress]",
-  button: "[data-js-progress-button]",
-  indicator: "[data-js-progress-indicator]",
-};
+new MoveBtnIndicator(DProgress.root, DProgress.button, DProgress.indicator);
 
-new MoveBtnIndicator(Progress.root, Progress.button, Progress.indicator);
+new HideProgressBar(DProgress.root, DProgress.bar, DProgress.switch);

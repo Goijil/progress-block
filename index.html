@@ -10,8 +10,8 @@
   <body>
     <div class="progress" data-js-progress>
       <h1 class="progress__title">Progress</h1>
-      <div class="progress__bar">
-        <div class="progress__bar--fill"></div>
+      <div class="progress__bar" data-visibility="true">
+        <div class="progress__bar--fill" data-js-progress-bar></div>
       </div>
       <div class="progress__panel mobile">
         <div class="progress__panel--item">
@@ -39,6 +39,7 @@
               class="progress__panel--button--indicator"
               data-active="false"
               data-js-progress-indicator
+              data-js-progress-bar-switch
             ></div>
           </div>
           <span class="progress__panel--text">Hide</span>

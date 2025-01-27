@@ -40,10 +40,24 @@
     align-items: center;
 
     &--fill {
+      display: block;
+
       border: 10px solid var(--color-accent);
       border-radius: 50%;
       width: 125px;
       height: 125px;
+
+      &.is-shown {
+        transition: all 1s ease 0s;
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+
+      &.is-hidden {
+        transition: all 1s ease 0s;
+        opacity: 0;
+        transform: translate(0, 50%);
+      }
     }
   }
 
