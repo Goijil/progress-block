@@ -1,7 +1,9 @@
 {
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "sass": "^1.83.4"
   },
+  "homepage": "http://goijil.github.io/progress-block/",
   "name": "progress-block",
   "version": "1.0.0",
   "main": "index.js",
@@ -22,6 +24,9 @@
     "to-regex-range": "^5.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "build": "npm run build-css",
     "build-css": "sass src:dist",
     "watch-css": "sass src:dist --watch",
     "css": "npm run build-css && npm run watch-css"
