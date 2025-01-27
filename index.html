@@ -8,7 +8,7 @@
     <script src="src/scripts/main.js" type="module" defer></script>
   </head>
   <body>
-    <div class="progress">
+    <div class="progress" data-js-progress>
       <h1 class="progress__title">Progress</h1>
       <div class="progress__bar">
         <div class="progress__bar--fill"></div>
@@ -17,22 +17,29 @@
         <div class="progress__panel--item">
           <input
             class="progress__panel--input"
-            type="number"
             placeholder="0-100"
-            name=""
-            id=""
+            name="progress"
+            data-js-progress-input
           />
           <span class="progress__panel--text">Value</span>
         </div>
         <div class="progress__panel--item">
-          <div class="progress__panel--button" data-active="false">
-            <div class="progress__panel--button--indicator"></div>
+          <div class="progress__panel--button" data-js-progress-button>
+            <div
+              class="progress__panel--button--indicator"
+              data-active="false"
+              data-js-progress-indicator
+            ></div>
           </div>
           <span class="progress__panel--text">Animate</span>
         </div>
         <div class="progress__panel--item">
-          <div class="progress__panel--button" data-active="false">
-            <div class="progress__panel--button--indicator"></div>
+          <div class="progress__panel--button" data-js-progress-button>
+            <div
+              class="progress__panel--button--indicator"
+              data-active="false"
+              data-js-progress-indicator
+            ></div>
           </div>
           <span class="progress__panel--text">Hide</span>
         </div>

@@ -80,27 +80,13 @@
         outline: none;
         border: 1.5px solid var(--color-text);
       }
-
-      &::-webkit-inner-spin-button,
-      &::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      & {
-        -moz-appearance: textfield;
-      }
     }
 
     &--button {
       width: 40px;
       height: 26px;
-
       border: 1.5px solid var(--color-text);
       border-radius: 25px;
-
-      position: relative;
-
       background-color: var(--color-background);
 
       &--indicator {
@@ -110,17 +96,15 @@
         background-color: var(--color-accent);
         border-radius: 50%;
 
-        // position: absolute;
+        transition: all 0.3s ease-in-out 0s;
 
-        // top: 0;
-        // transform: translateY(0);
-        // left: 0;
+        &.is-active {
+          transform: translate(13px, 0);
+        }
 
-        // transition: all 0.3s ease; /* Плавная анимация */
-
-        // &.active {
-        //   left: calc(100% - 24px); /* Перемещение вправо */
-        // }
+        &.is-lock {
+          transform: translate(0, 0);
+        }
       }
     }
   }

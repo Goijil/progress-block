@@ -150,6 +150,20 @@ label {
   cursor: pointer;
 }
 
+/** 
+   Эти псевдоэлементы используются для стилизации внутренних 
+   и внешних кнопок увеличения и уменьшения значения в 
+   элементах <input type="number"> 
+  */
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
 /**
    Приводим к единому цвету svg-элементы
    (за исключением тех, у которых уже указан
@@ -273,19 +287,11 @@ body {
   outline: none;
   border: 1.5px solid var(--color-text);
 }
-.progress__panel--input::-webkit-inner-spin-button, .progress__panel--input::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.progress__panel--input {
-  -moz-appearance: textfield;
-}
 .progress__panel--button {
   width: 40px;
   height: 26px;
   border: 1.5px solid var(--color-text);
   border-radius: 25px;
-  position: relative;
   background-color: var(--color-background);
 }
 .progress__panel--button--indicator {
@@ -294,6 +300,13 @@ body {
   margin: 1px;
   background-color: var(--color-accent);
   border-radius: 50%;
+  transition: all 0.3s ease-in-out 0s;
+}
+.progress__panel--button--indicator.is-active {
+  transform: translate(13px, 0);
+}
+.progress__panel--button--indicator.is-lock {
+  transform: translate(0, 0);
 }
 
 /*# sourceMappingURL=main.css.map */

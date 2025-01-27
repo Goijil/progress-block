@@ -141,6 +141,24 @@ label {
   cursor: pointer;
 }
 
+/** 
+   Эти псевдоэлементы используются для стилизации внутренних 
+   и внешних кнопок увеличения и уменьшения значения в 
+   элементах <input type="number"> 
+  */
+input {
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  & {
+    appearance: textfield;
+    -moz-appearance: textfield;
+  }
+}
+
 /**
    Приводим к единому цвету svg-элементы
    (за исключением тех, у которых уже указан
