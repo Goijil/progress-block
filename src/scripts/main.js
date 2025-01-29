@@ -1,20 +1,13 @@
 import { DProgress } from "./data.progress.js";
-import { MoveBtnIndicator } from "./MoveBtnIndicator.js";
-import { HideProgressBar } from "./HideProgressBar.js";
-import { SetValueInput } from "./SetValueInput.js";
+import { Progress } from "./Progress.js";
 
-new MoveBtnIndicator(DProgress.root, DProgress.button, DProgress.indicator);
-
-new HideProgressBar(
-  DProgress.root,
-  DProgress.bar,
-  DProgress.buttonVisibilityToggle
-);
-
-new SetValueInput(
+new Progress(
   DProgress.root,
   DProgress.bar,
   DProgress.circle,
   DProgress.input,
-  DProgress.buttonAnimationToggle
+  DProgress.spaceBtnAnimation,
+  DProgress.btnAnimationToggle,
+  DProgress.spaceBtnVisibility,
+  DProgress.btnVisibilityToggle
 );

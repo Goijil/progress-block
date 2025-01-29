@@ -96,6 +96,13 @@
         r: calc(50% - 5px);
         stroke-dasharray: 346;
         stroke-dashoffset: 346;
+
+        transition: all 1s ease;
+        transform-origin: center;
+
+        &.rotate-circle {
+          animation: rotateCircle 1s cubic-bezier(0.55, 0.95, 0.7, 0.5) infinite;
+        }
       }
     }
   }
@@ -123,6 +130,11 @@
       color: var(--color-text);
 
       font-size: 12px;
+
+      &.error-input {
+        border: 1.5px outset red;
+        background-color: rgba(255, 0, 0, 0.164);
+      }
     }
 
     &--button {
@@ -143,7 +155,7 @@
         transition: all 0.3s ease-in-out 0s;
 
         &.is-active {
-          transform: translate(13px, 0);
+          transform: translate(14px, 0);
         }
 
         &.is-lock {
@@ -151,5 +163,14 @@
         }
       }
     }
+  }
+}
+
+@keyframes rotateCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

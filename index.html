@@ -10,7 +10,7 @@
   <body>
     <div class="progress" data-js-progress>
       <h1 class="progress__title">Progress</h1>
-      <div class="progress__bar" data-visibility="true">
+      <div class="progress__bar">
         <div class="progress__bar--layout" data-js-progress-bar>
           <div class="progress__bar--inner"></div>
           <svg
@@ -37,23 +37,27 @@
           <span class="progress__panel--text">Value</span>
         </div>
         <div class="progress__panel--item">
-          <div class="progress__panel--button" data-js-progress-button>
+          <div
+            class="progress__panel--button"
+            data-js-progress-animation-button-space
+          >
             <button
               class="progress__panel--button--indicator"
               data-active="false"
-              data-js-progress-indicator
-              data-js-progress-bar-animation-toggle
+              data-js-progress-animation-button-space-toggle
             ></button>
           </div>
           <span class="progress__panel--text">Animate</span>
         </div>
         <div class="progress__panel--item">
-          <div class="progress__panel--button" data-js-progress-button>
+          <div
+            class="progress__panel--button"
+            data-js-progress-visibility-button-space
+          >
             <button
               class="progress__panel--button--indicator"
               data-active="false"
-              data-js-progress-indicator
-              data-js-progress-bar-visibility-toggle
+              data-js-progress-visibility-button-space-toggle
             ></button>
           </div>
           <span class="progress__panel--text">Hide</span>

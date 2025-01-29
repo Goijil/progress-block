@@ -1,10 +1,10 @@
 export const DProgress = {
   root: "[data-js-progress]",
-  button: "[data-js-progress-button]",
-  indicator: "[data-js-progress-indicator]",
   bar: "[data-js-progress-bar]",
-  buttonVisibilityToggle: "[data-js-progress-bar-visibility-toggle]",
   circle: "[data-js-progress-circle]",
   input: "[data-js-progress-input]",
-  buttonAnimationToggle: "[ data-js-progress-bar-animation-toggle]",
+  spaceBtnAnimation: "[data-js-progress-animation-button-space]",
+  btnAnimationToggle: "[data-js-progress-animation-button-space-toggle]",
+  spaceBtnVisibility: "[data-js-progress-visibility-button-space]",
+  btnVisibilityToggle: "[data-js-progress-visibility-button-space-toggle]",
 };
