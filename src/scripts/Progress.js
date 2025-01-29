@@ -104,12 +104,7 @@ export class Progress {
       this.EmInput.removeEventListener("input", this.getCorrectOffset);
       this.switchAnimateBar();
       this.switchStateBtn(this.EmBtnAnim);
-
-      if (this.getStateBtn(this.EmBtnAnim)) {
-        this.EmInput.addEventListener("input", this.getCorrectOffset);
-      } else {
-        this.EmInput.addEventListener("input", this.getCorrectOffset);
-      }
+      this.EmInput.addEventListener("input", this.getCorrectOffset);
     });
   };
 
