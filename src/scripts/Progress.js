@@ -67,8 +67,9 @@ export class Progress {
   };
 
   inputValidation = (currentOffset) => {
+    const EmPlaceholder = this.EmInput.closest("[data-js-placeholder]");
+    EmPlaceholder.classList.remove("placeholder");
     this.EmInput.classList.remove("error-input");
-
     const nonWhitespaceRegex = /\S/;
     const numberRegex = /^[0-9]+(\.[0-9]*)?$/;
     const hasNonWhitespace = nonWhitespaceRegex.test(currentOffset);
@@ -76,6 +77,7 @@ export class Progress {
     const value = parseFloat(currentOffset);
 
     if (!hasNonWhitespace) {
+      EmPlaceholder.classList.add("placeholder");
       return 0;
     } else if (!isNumber) {
       this.EmInput.classList.add("error-input");
@@ -96,6 +98,7 @@ export class Progress {
   };
 
   getCorrectOffset = (event) => {
+    event.target.value = event.target.value.replace(/\s+/g, "");
     const currentOffset = this.inputValidation(event.target.value);
     const newOffset = 346 - currentOffset * (346 / 100);
 
