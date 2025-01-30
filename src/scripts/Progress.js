@@ -67,14 +67,17 @@ export class Progress {
   };
 
   inputValidation = (currentOffset) => {
-    const value = parseFloat(currentOffset);
-    const regex = /^[0-9]+(\.[0-9]*)?$/;
-
     this.EmInput.classList.remove("error-input");
 
-    if (currentOffset === "") {
+    const nonWhitespaceRegex = /\S/;
+    const numberRegex = /^[0-9]+(\.[0-9]*)?$/;
+    const hasNonWhitespace = nonWhitespaceRegex.test(currentOffset);
+    const isNumber = numberRegex.test(currentOffset);
+    const value = parseFloat(currentOffset);
+
+    if (!hasNonWhitespace) {
       return 0;
-    } else if (!regex.test(currentOffset)) {
+    } else if (!isNumber) {
       this.EmInput.classList.add("error-input");
       return 0;
     } else if (value > 100) {

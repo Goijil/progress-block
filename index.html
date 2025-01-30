@@ -12,7 +12,6 @@
       <h1 class="progress__title">Progress</h1>
       <div class="progress__bar">
         <div class="progress__bar--layout" data-js-progress-bar>
-          <div class="progress__bar--inner"></div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
@@ -31,35 +30,35 @@
             aria-label="Введите значение прогресса"
             class="progress__panel--input"
             placeholder="0-100"
-            name="progress"
             data-js-progress-input
+            name="progress"
           />
           <span class="progress__panel--text">Value</span>
         </div>
         <div class="progress__panel--item">
-          <div
+          <label
             class="progress__panel--button"
             data-js-progress-animation-button-space
           >
-            <button
+            <span
               class="progress__panel--button--indicator"
-              data-active="false"
               data-js-progress-animation-button-space-toggle
-            ></button>
-          </div>
+              data-active="false"
+            ></span>
+          </label>
           <span class="progress__panel--text">Animate</span>
         </div>
         <div class="progress__panel--item">
-          <div
+          <label
             class="progress__panel--button"
             data-js-progress-visibility-button-space
           >
-            <button
+            <span
               class="progress__panel--button--indicator"
               data-active="false"
               data-js-progress-visibility-button-space-toggle
-            ></button>
-          </div>
+            ></span>
+          </label>
           <span class="progress__panel--text">Hide</span>
         </div>
       </div>

@@ -104,14 +104,8 @@ input {
     -moz-appearance: textfield;
   }
 
-  &:hover {
-    border: 1.5px solid var(--color-text);
-    background-color: var(--color-background);
-  }
-
   &:focus {
     outline: none;
-    border: 1.5px solid var(--color-text);
   }
 }
 

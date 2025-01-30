@@ -4,13 +4,10 @@
   @include tablet {
     display: grid;
     grid-template-rows: 0.35fr 1fr 1fr 0.35fr;
-
     width: 320px;
     height: 568px;
     padding: 15px;
-
     background-color: var(--color-panel-bg);
-
     border-radius: 10px;
 
     .mobile {
@@ -21,11 +18,9 @@
   @include laptop {
     display: grid;
     grid-template-columns: 0.25fr 1fr 1fr 0.25fr;
-
     height: 320px;
     width: 568px;
     padding: 20px;
-
     background-color: var(--color-panel-bg);
     border-radius: 10px;
   }
@@ -44,14 +39,29 @@
       justify-content: center;
       align-items: center;
 
-      width: 120px;
-      height: 120px;
+      &::before {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25),
+          -2px -2px 4px rgba(255, 255, 255, 0.015),
+          inset 1px 1px 3px rgba(0, 0, 0, 0.3),
+          inset -1px -1px 2px rgba(255, 255, 255, 0.02);
+      }
 
-      border-radius: 50%;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4),
-        0 -2px 4px rgba(255, 255, 255, 0.068),
-        inset 0 1px 3px rgba(255, 255, 255, 0.137),
-        inset -2px -2px 6px rgba(0, 0, 0, 0.6);
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2),
+          -1px -1px 3px rgba(255, 255, 255, 0.01),
+          inset 1px 1px 2px rgba(0, 0, 0, 0.25),
+          inset -1px -1px 2px rgba(255, 255, 255, 0.015);
+      }
 
       &.is-shown {
         transition: all 1s ease 0s;
@@ -66,23 +76,9 @@
       }
     }
 
-    &--inner {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background-color: var(--color-panel-bg);
-      border-radius: 50%;
-
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
-        0 -2px 6px rgba(255, 255, 255, 0.2),
-        inset 2px 2px 4px rgba(0, 0, 0, 0.5),
-        inset -2px -2px 6px rgba(255, 255, 255, 0.096);
-    }
-
     &--filler {
       width: 120px;
       height: 120px;
-
       transform: rotate(-90deg);
       transform-origin: center;
 
@@ -96,7 +92,6 @@
         r: calc(50% - 5px);
         stroke-dasharray: 346;
         stroke-dashoffset: 346;
-
         transition: all 1s ease;
         transform-origin: center;
 
@@ -111,55 +106,69 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    row-gap: 10px;
 
     &--item {
       display: flex;
-      gap: 20px;
+      gap: 10px;
     }
 
     &--input {
       width: 40px;
       height: 26px;
-
-      border: 1.5px solid var(--color-text);
-      border-radius: 25px;
-
+      border: 1px solid var(--color-text);
+      border-radius: 13px;
       text-align: center;
       background-color: var(--color-background);
       color: var(--color-text);
 
-      font-size: 12px;
+      &::placeholder {
+        font-size: 75%;
+      }
 
       &.error-input {
-        border: 1.5px outset red;
+        border: 1px outset red;
         background-color: rgba(255, 0, 0, 0.164);
       }
     }
 
     &--button {
+      display: inline-block;
+      position: relative;
       width: 40px;
       height: 26px;
-      border: 1.5px solid var(--color-text);
-      border-radius: 25px;
-      background-color: var(--color-background);
 
       &--indicator {
         position: absolute;
-        width: 22px;
-        height: 22px;
-        margin: 1px;
-        background-color: var(--color-accent);
-        border-radius: 50%;
+        cursor: pointer;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border: 1px solid var(--color-text);
+        border-radius: 26px;
+        background-color: var(--color-background);
 
-        transition: all 0.3s ease-in-out 0s;
-
-        &.is-active {
-          transform: translate(14px, 0);
+        &::before {
+          content: "";
+          position: absolute;
+          cursor: pointer;
+          top: 2px;
+          left: 2px;
+          bottom: 2px;
+          width: 20px;
+          height: 20px;
+          background-color: var(--color-accent);
+          border-radius: 20px;
+          transition: all 0.3s ease-in-out 0s;
         }
 
-        &.is-lock {
-          transform: translate(0, 0);
+        &.is-active::before {
+          transform: translateX(14px);
+        }
+
+        &.is-lock::before {
+          transform: translateX(0);
         }
       }
     }
